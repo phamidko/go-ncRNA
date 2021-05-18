@@ -43,15 +43,35 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && unzip awscliv2.zip \
     && sudo ./aws/install
 
+
+# from https://github.com/microsoft/vscode-dev-containers/blob/master/containers/python-3-miniconda/.devcontainer/base.Dockerfile
+# [Option] Install zsh
+ARG INSTALL_ZSH="true"
+# [Option] Upgrade OS packages to their latest versions
+ARG UPGRADE_PACKAGES="true"
+
+# Install needed packages and setup non-root user. Use a separate RUN statement to add your own dependencies.
+# ARG USERNAME=vscode
+# ARG USER_UID=1000
+# ARG USER_GID=$USER_UID
+# RUN mkdir -p /tmp/library-scripts/
+# COPY .devcontainer/library-scripts/common-debian.sh /tmp/library-scripts/
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true" \
+#     && apt-get autoremove -y && \apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
+
 # -----------------------------------------------------------------------------------
-#
+#  GO setup
 #
 # -------------------------------------------------------------------------------------
+
+
 ENV GOPATH=/go
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH \
     CGO_ENABLED=0 \
     GO111MODULE=on
 WORKDIR $GOPATH
+
 # Install Debian packages
 RUN apt-get update && \
     apt-get install -y --no-install-recommends g++ wget && \
