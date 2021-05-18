@@ -13,8 +13,18 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/l
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
+# Install Debian packages
+
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install software-properties-common ansible
+    && apt-get -y install software-properties-common ansible \
+    && apt-get -y install build-essential cmake cppcheck valgrind clang lldb llvm gdb
+
+RUN apt-get install -y --no-install-recommends g++ wget && \
+    apt-get autoremove -y && \
+    apt-get clean -y && \
+    rm -r /var/cache/* /var/lib/apt/lists/*
+
+
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 RUN apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
     && apt-get update && apt-get install terraform
@@ -72,12 +82,6 @@ ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH \
     GO111MODULE=on
 WORKDIR $GOPATH
 
-# Install Debian packages
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends g++ wget && \
-    apt-get autoremove -y && \
-    apt-get clean -y && \
-    rm -r /var/cache/* /var/lib/apt/lists/*
 # Shell setup
 # COPY shell/.zshrc-specific shell/.welcome.sh /home/vscode/.zshrc/
 # Install Go packages
