@@ -1,7 +1,9 @@
 # go-ncRNA
 
 
-![RNA](./doc/RNA_Lathe and_Eickbush-1997.jpg)
+<img src="./doc/RNA_Lathe and_Eickbush-1997.jpg" />
+
+
 ## awscli
 ```bash
 aws configure
