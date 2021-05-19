@@ -4,6 +4,9 @@
 <img src="./doc/RNA_Lathe and_Eickbush-1997.jpg" />
 
 
+### Resources
+RNA Secondary Structure Visualization Using a Force Directed Graph Layout
+http://rna.tbi.univie.ac.at/forna/
 ## awscli
 ```bash
 aws configure
