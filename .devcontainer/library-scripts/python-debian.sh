@@ -111,7 +111,8 @@ DEFAULT_UTILS="\
     pycodestyle \
     bandit \
     pipenv \
-    virtualenv"
+    virtualenv \
+    bioconda"
 
 
 export PIPX_BIN_DIR=${PIPX_HOME}/bin
