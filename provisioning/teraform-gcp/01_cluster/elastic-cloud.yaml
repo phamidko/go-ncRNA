@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: test-secret
+data:
+  cloud.id: "Elastic-Stack-Kubernetes:ZXVyb3BlLXdlc3QyLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQ1MGRmNDM1Njk1NDA0MzhjOWMwZjFlNDdmMGRmMjIzNiQwNzU0YTk3NzJhNzc0YzJmOWYzNDJiYmFhMjgxNzNjNA=="
+  cloud.auth: "elastic:GL552o90ISkLF1DKKzoV4pzz"
